@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://bxx1u2mjxquo0"]
+
+[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_frwjo"]
+[ext_resource type="PackedScene" uid="uid://dnap1ober67xk" path="res://Scenes/create_user_screen.tscn" id="1_q5af1"]
+[ext_resource type="ButtonGroup" uid="uid://nwwbrj8x2buh" path="res://Resources/menu_button_group.tres" id="2_0waxf"]
+[ext_resource type="PackedScene" uid="uid://bfs7ugp4fpnkm" path="res://Scenes/transfer_amount_screen.tscn" id="2_3oww2"]
+[ext_resource type="PackedScene" uid="uid://cxp58ynjal7i3" path="res://Scenes/lend_transfer_amount_screen.tscn" id="3_0qxh0"]
+
+[node name="AspectRatioContainer" type="AspectRatioContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.7
+script = ExtResource("1_frwjo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CreateUser" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_0waxf")
+text = "Create User"
+
+[node name="TrasnderAmount" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_0waxf")
+text = "Transfer Amount"
+
+[node name="TrasnderLendAmount" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("2_0waxf")
+text = "Transfer lend Amount"
+
+[node name="CreateUserScreen" parent="HBoxContainer" instance=ExtResource("1_q5af1")]
+visible = false
+layout_mode = 2
+
+[node name="TransferAmountScreen" parent="HBoxContainer" instance=ExtResource("2_3oww2")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TransferAmountScreen2" parent="HBoxContainer" instance=ExtResource("3_0qxh0")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/CreateUser" to="." method="_on_create_user_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/TrasnderAmount" to="." method="_on_trasnder_amount_toggled"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/TrasnderLendAmount" to="." method="_on_trasnder_lend_amount_toggled"]

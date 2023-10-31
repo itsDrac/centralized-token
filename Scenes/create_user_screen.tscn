@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnap1ober67xk"]
+
+[ext_resource type="Script" path="res://Scripts/create_user_screen.gd" id="1_6rhvo"]
+
+[node name="CreateUserScreen" type="PanelContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_6rhvo")
+
+[node name="CC" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="User" type="VBoxContainer" parent="CC"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/User"]
+layout_mode = 2
+text = "Enter User name"
+
+[node name="LineEdit" type="LineEdit" parent="CC/User"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="Error" type="Label" parent="CC/User"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "Invalid Username"
+horizontal_alignment = 1
+
+[node name="Add" type="Button" parent="CC/User"]
+layout_mode = 2
+text = "Add"
+
+[node name="Funds" type="VBoxContainer" parent="CC"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/Funds"]
+layout_mode = 2
+text = "Add Funds"
+
+[node name="LineEdit" type="LineEdit" parent="CC/Funds"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+placeholder_text = "Amount in Number"
+
+[node name="Error" type="Label" parent="CC/Funds"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.745098, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 11
+text = "Invalid Username"
+horizontal_alignment = 1
+
+[node name="Add" type="Button" parent="CC/Funds"]
+layout_mode = 2
+text = "Add"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="CC/User/Add" to="." method="_on_add_user_pressed"]
+[connection signal="pressed" from="CC/Funds/Add" to="." method="_on_add_fund_pressed"]

@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxp58ynjal7i3"]
+
+[ext_resource type="Script" path="res://Scripts/lend_transfer_amount_screen.gd" id="1_ag0ib"]
+[ext_resource type="PackedScene" uid="uid://cuepfvmb6hmqj" path="res://Scenes/user_selection_button.tscn" id="2_yaw4o"]
+
+[node name="TransferAmountScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ag0ib")
+
+[node name="CC" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="VBC" type="VBoxContainer" parent="CC"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/VBC"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Transfer Lend Amount"
+
+[node name="HBC" type="HBoxContainer" parent="CC/VBC"]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="VBC" type="VBoxContainer" parent="CC/VBC/HBC"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/VBC/HBC/VBC"]
+layout_mode = 2
+text = "User"
+
+[node name="FromUser" parent="CC/VBC/HBC/VBC" instance=ExtResource("2_yaw4o")]
+layout_mode = 2
+
+[node name="VBC4" type="VBoxContainer" parent="CC/VBC/HBC"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/VBC/HBC/VBC4"]
+layout_mode = 2
+text = "Can spend from"
+
+[node name="LendUser" parent="CC/VBC/HBC/VBC4" instance=ExtResource("2_yaw4o")]
+layout_mode = 2
+
+[node name="VBC2" type="VBoxContainer" parent="CC/VBC/HBC"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/VBC/HBC/VBC2"]
+layout_mode = 2
+text = "To user:"
+
+[node name="ToUser" parent="CC/VBC/HBC/VBC2" instance=ExtResource("2_yaw4o")]
+layout_mode = 2
+
+[node name="VBC3" type="VBoxContainer" parent="CC/VBC/HBC"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CC/VBC/HBC/VBC3"]
+layout_mode = 2
+text = "Amount
+"
+
+[node name="Amount" type="LineEdit" parent="CC/VBC/HBC/VBC3"]
+layout_mode = 2
+
+[node name="Error" type="Label" parent="CC/VBC"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.784314, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 11
+
+[node name="Transfer" type="Button" parent="CC/VBC"]
+layout_mode = 2
+text = "Transfer"
+
+[connection signal="pressed" from="CC/VBC/Transfer" to="." method="_on_transfer_pressed"]
